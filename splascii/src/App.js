@@ -6,7 +6,7 @@ function App() {
   const renderBoard = board.map((_, index) => {
     return(
       <div className={index}>
-        <p>test</p>
+        <p>testtest</p>
       </div>
     )
   });
