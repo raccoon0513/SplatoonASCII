@@ -3,7 +3,6 @@ import './App.css';
 
 //////////////////////////////////////////////////////
 //TODO : css 되돌리기
-//TODO : 안나오는거 고치지
 //////////////////////////////////////////////////////
 
 
@@ -117,7 +116,7 @@ function App() {
     };
 
     //TODO : tick 다시 시작하려면 주석 해제할 것(디버깅용)
-    //animationFrameId = requestAnimationFrame(tick);
+    animationFrameId = requestAnimationFrame(tick);
 
     return () => {
       cancelAnimationFrame(animationFrameId);
