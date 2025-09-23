@@ -1,6 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import './App.css';
 
+//////////////////////////////////////////////////////
+//TODO : css 되돌리기
+//////////////////////////////////////////////////////
+
+
 const ASCII_CHARS = '@#S%?*+;:,._ ';
 const widthFontCount = 100;
 const heightFontCount = 50;
