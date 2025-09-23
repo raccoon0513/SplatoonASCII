@@ -106,10 +106,12 @@ function App() {
       const newAsciiText = convertToAscii(imageData);
       setAsciiText(newAsciiText);
       
+      
       animationFrameId = requestAnimationFrame(tick);
     };
 
-    animationFrameId = requestAnimationFrame(tick);
+    //TODO : tick 다시 시작하려면 주석 해제할 것(디버깅용)
+    //animationFrameId = requestAnimationFrame(tick);
 
     return () => {
       cancelAnimationFrame(animationFrameId);
@@ -120,6 +122,7 @@ function App() {
     <div className="App">
       <canvas ref={canvasRef} style={{ display: 'none' }}></canvas>
       <pre>{asciiText}</pre>
+      
     </div>
   );
 }
