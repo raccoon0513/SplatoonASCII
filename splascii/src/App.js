@@ -16,11 +16,9 @@ function App() {
   const [asciiText, setAsciiText] = useState('');
   const [metaballs, setMetaballs] = useState([]);
   
-
+  const canvas = document.createElement('canvas');//캔버스 생성
   
-  //글자 크기 구해서 canvas 사이즈 구하기
-  const canvas = document.createElement('canvas');
-  const ctx = canvas.getContext('2d');
+  const ctx = canvas.getContext('2d'); //글자 크기 구해서 canvas 사이즈 구하기
   ctx.font = '10px Courier New'; // CSS와 동일한 폰트 설정 적용
   const metrics = ctx.measureText('M'); // 예시로 'M' 문자의 크기를 측정
   const [width, setWidth] = useState(metrics.width * (widthFontCount));
@@ -41,7 +39,11 @@ function App() {
     setMetaballs(initialMetaballs);
   }, []);
 
+  
+  
   useEffect(() => {
+    
+    
     const canvas = canvasRef.current;
     if (!canvas || metaballs.length === 0) return;
 
@@ -76,6 +78,7 @@ function App() {
       ctx.putImageData(imageData, 0, 0);
     };
 
+    //아스키로 변환
     const convertToAscii = (imageData) => {
       let ascii = '';
       const data = imageData.data;
@@ -123,13 +126,23 @@ function App() {
     };
   }, [metaballs]);
 
+  //TODO : mouseDownEventHandler
+  const mouseDownEventHandler = (event) =>{
+    
+  }
+
   return (
     <div className="App">
-      <canvas ref={canvasRef} style={{ display: 'none' }}></canvas>
+      <canvas
+        ref={canvasRef}
+        style={{ display: 'none' }}
+        // onMouseDown={} // TODO : 주석 풀고 마우스다운 추가하기
+        ></canvas>
       <pre>{asciiText}</pre>
       
     </div>
   );
 }
+//TODO : 지울것
 
 export default App;
