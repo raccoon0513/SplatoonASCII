@@ -23,8 +23,8 @@ function App() {
   const ctx = canvas.getContext('2d');
   ctx.font = '10px Courier New'; // CSS와 동일한 폰트 설정 적용
   const metrics = ctx.measureText('M'); // 예시로 'M' 문자의 크기를 측정
-  const [width, setWidth] = useState(metrics.width * (widthFontCount+1));
-  const [height, setHeight] = useState((metrics.actualBoundingBoxAscent + metrics.actualBoundingBoxDescent)*(heightFontCount+1))
+  const [width, setWidth] = useState(metrics.width * (widthFontCount));
+  const [height, setHeight] = useState((metrics.actualBoundingBoxAscent + metrics.actualBoundingBoxDescent)*(heightFontCount))
 
   useEffect(() => {
     // 초기 메타볼 생성
