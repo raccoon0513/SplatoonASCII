@@ -41,15 +41,17 @@ function App() {
 
   
   
-  useEffect(() => {
+  useEffect(() => { // TODO : 뭔 코드지 프레임 관련 추측
     
     
-    const canvas = canvasRef.current;
+
     if (!canvas || metaballs.length === 0) return;
 
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d', { willReadFrequently: true });
     canvas.width = width;
     canvas.height = height;
+    
+
     
     let animationFrameId;
 
@@ -128,21 +130,29 @@ function App() {
 
   //TODO : mouseDownEventHandler
   const mouseDownEventHandler = (event) =>{
+    const canvas = canvasRef.current
+    if(!canvas) return;
     
+    const rect = canvas.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+    console.log({
+      left : x,
+      top : y
+    });
   }
 
   return (
     <div className="App">
       <canvas
         ref={canvasRef}
-        style={{ display: 'none' }}
-        // onMouseDown={} // TODO : 주석 풀고 마우스다운 추가하기
+        //style={{ display: 'none' }}
+        style={{ border: '1px solid red', display: 'block' }}
+        onMouseDown={mouseDownEventHandler} // TODO : 주석 풀고 마우스다운 추가하기
         ></canvas>
       <pre>{asciiText}</pre>
       
     </div>
   );
 }
-//TODO : 지울것
-
 export default App;
